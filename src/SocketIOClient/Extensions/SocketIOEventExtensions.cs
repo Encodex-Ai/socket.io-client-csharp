@@ -7,12 +7,12 @@ namespace SocketIOClient.Extensions
     {
         public static void TryInvoke(this OnAnyHandler handler, string eventName, SocketIOResponse response)
         {
-            Task.Run(() => handler(eventName, response));
+            handler(eventName, response);
         }
 
         public static void TryInvoke(this Action<SocketIOResponse> handler, SocketIOResponse response)
         {
-            Task.Run(() => handler(response));
+            handler(response);
         }
 
         public static Task TryInvoke(this Func<SocketIOResponse, Task> handler, SocketIOResponse response)
